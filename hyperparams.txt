@@ -1,0 +1,42 @@
+IMAML-GD
+
+Omniglot
+
+16 GD steps 5-way 1-shot
+16 GD steps 5-way 5-shot
+25 GD steps 20-way 1-shot
+25 GD steps 20-way 5-shot
+
+lambda = 2.0
+
+CG steps = 5
+
+Mini-ImageNet
+
+10 GD steps
+
+CG steps = 5
+
+
+IMAML-HF
+
+Omniglot
+
+{
+Newton-CG steps = 5
+Line search
+}
+x3
+
+
+Mini-ImageNet
+
+{
+Newton-CG steps = 5
+Line search
+}
+x3
+
+CG steps = 5
+
+
