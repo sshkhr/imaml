@@ -10,12 +10,8 @@ from torchmeta.datasets import Omniglot, MiniImagenet
 from torchmeta.utils.data import BatchMetaDataLoader
 from torchmeta.transforms import Categorical, ClassSplitter
 
-from gbml.maml import MAML
-from gbml.imaml import iMAML
-from gbml.neumann import Neumann
-from gbml.reptile import Reptile
-from gbml.cavia import CAVIA
-from gbml.fomaml import FOMAML
+from metalearners.maml import MAML
+from metalearners.imaml import iMAML
 from utils import set_seed, set_gpu, check_dir, dict2tsv, BestTracker
 
 def train(args, model, dataloader):
@@ -186,7 +182,7 @@ def parse_args():
     # training settings
     parser.add_argument('--num_epoch', type=int, default=600,
         help='Number of epochs for meta train.') 
-    parser.add_argument('--batch_size', type=int, default=32,
+    parser.add_argument('--batch_size', type=int, default=4,
         help='Number of tasks in a mini-batch of tasks (default: 4).')
     parser.add_argument('--num_train_batches', type=int, default=100,
         help='Number of batches the model is trained over (default: 100).')
@@ -196,11 +192,10 @@ def parse_args():
     # meta-learning settings
     parser.add_argument('--num_shot', type=int, default=5,
         help='Number of support examples per class (k in "k-shot", default: 1).')
-    parser.add_argument('--num_query', type=int, default=15,
-        help='Number of query examples per class (k in "k-query", default: 15).')
     parser.add_argument('--num_way', type=int, default=5,
         help='Number of classes per task (N in "N-way", default: 5).')
-    parser.add_argument('--alg', type=str, default='MAML')
+    parser.add_argument('--num_query', type=int, default=15,
+        help='Number of query examples per class (k in "k-query", default: 15).')
 
     # algorithm settings
     parser.add_argument('--n_inner', type=int, default=5)
