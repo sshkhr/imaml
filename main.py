@@ -12,7 +12,7 @@ from torchmeta.transforms import Categorical, ClassSplitter
 
 from metalearners.maml import MAML
 from metalearners.imaml import iMAML
-from utils import set_seed, set_gpu, check_dir, dict2tsv, BestTracker
+from utils.utils import set_seed, set_gpu, check_dir, dict2tsv, BestTracker
 
 def train(args, model, dataloader):
 

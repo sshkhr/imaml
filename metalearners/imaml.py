@@ -6,7 +6,8 @@ import higher
 import copy
 
 from gbml import GBML
-from utils import get_accuracy, apply_grad, mix_grad, grad_to_cos, loss_to_ent
+from utils.utils import get_accuracy, apply_grad, mix_grad, grad_to_cos, loss_to_ent
+from utils.hessianfree import HessianFree
 
 class iMAML(GBML):
 
@@ -16,6 +17,10 @@ class iMAML(GBML):
         self._init_opt()
         self.lamb = 100.0
         self.n_cg = args.cg_steps
+        self.version = args.version
+
+        if self.version == 'HF':
+            self.inner_optimizer = HessianFree(cg_max_iter=3,)
         return None
 
     @torch.enable_grad()
